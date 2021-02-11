@@ -6,6 +6,9 @@ let
   };
 in
 rec {
+  basic = [ bash genv ];
+  base = basic ++ base_util;
+  just = basic ++ util_pkgs;
   bash = pkgs.bashInteractive_5;
   genv = with pkgs; [
     tint2
