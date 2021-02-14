@@ -6,7 +6,7 @@ let
   };
 in
 rec {
-  basic = [ bash genv ];
+  basic = [ genv ];
   base = basic ++ base_util;
   just = basic ++ util_pkgs;
   bash = pkgs.bashInteractive_5;
