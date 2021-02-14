@@ -70,12 +70,8 @@ rec {
     stalonetray
     feedreader
     teams
-    # texlive.combined.scheme-small
-    # rubber
-    # texworks
     zim
     graphviz python38Packages.xdot
-    # texlive.combined.scheme-medium
     chromium
     guvcview
     hugo
@@ -94,18 +90,14 @@ rec {
     go
     gtk2fontsel
     nixpkgs-review
-    # Patchwork
     pciutils
 
     write_stylus
     poppler_utils
-    texmaker
-    texlive.combined.scheme-full
     spotify
     vivaldi
     xournalpp
     xorg.xclock
-    virt-manager
     kmail
   ] ++ base_util;
   games = with pkgs; [
