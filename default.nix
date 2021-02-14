@@ -33,7 +33,7 @@ rec {
     xclip
     elinks links
     dillo
-    midori
+    # midori
     firefox
     scrot
     emacs
