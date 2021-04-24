@@ -112,4 +112,7 @@ rec {
     minetest
     openarena
   ];
+  cdda_undead = pkgs.cataclysm-dda.withMods [
+    pkgs.cataclysm-dda.pkgs.tileset.UndeadPeople
+  ];
 }
