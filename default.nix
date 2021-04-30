@@ -41,68 +41,68 @@ rec {
     pavucontrol
     pasystray
     file
+    tdesktop
+    pcmanfm
+    discord
+    spotify
+    pass-otp passff-host
+    qtpass
   ];
   util_pkgs = with pkgs; [
     kakoune kak-lsp
     zsh
     git-hub
-    pass-otp passff-host
-    qtpass
     # ly
-    gwenview
+    gwenview #TODO
     xfontsel
     x2goclient
-    powershell
-    tdesktop
+    # powershell
     aerc
     android-file-transfer
-    pcmanfm
     zathura
     mplayer
     vlc
     youtube-dl
     libreoffice
-    gimp
+    # gimp
     leafpad
     pandoc
     xarchiver
-    brave
+    # brave
     stalonetray
-    feedreader
-    teams
+    # feedreader
+    # teams
     # texlive.combined.scheme-small
     # rubber
     # texworks
     zim
     graphviz python38Packages.xdot
     # texlive.combined.scheme-medium
-    chromium
+    # chromium
     guvcview
     hugo
     imagemagick
-    thunderbird
-    xorg.xev
+    # thunderbird
+    xorg.xev #TODO
 
     abiword
     amp
-    clojure leiningen
-    conda
-    discord
-    dotnet-sdk
-    freemind
+    # clojure leiningen
+    # conda
+    # dotnet-sdk
+    # freemind
     gitAndTools.gh
-    go
+    # go
     gtk2fontsel
-    nixpkgs-review
+    # nixpkgs-review
     # Patchwork
     pciutils
 
     write_stylus
     poppler_utils
-    texmaker
-    texlive.combined.scheme-full
-    spotify
-    vivaldi
+    # texmaker
+    # texlive.combined.scheme-full
+    # vivaldi
     xournalpp
     xorg.xclock
     virt-manager
