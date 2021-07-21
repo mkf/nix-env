@@ -18,6 +18,13 @@ rec {
     pulseaudio-ctl
   ];
   vim = pkgs.vim_configurable.override { python = pkgs.python3; };
+  code = pkgs.vscode-fhsWithPackages (ps: with ps; [
+    rustup zlib  # needed for rust lang server extension
+    # (python39Full.withPackages (pp: with pp; [ pipenv ]))
+    pipenv
+    python39Full
+    python310
+  ]);
   netsurf = pkgs.netsurf.browser.override { uilib = "gtk3"; };
   jetbrains = with pkgs; with jetbrains; {
     inherit goland;
