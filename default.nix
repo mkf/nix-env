@@ -8,9 +8,10 @@ in
 rec {
   basic = [ genv ];
   level_zero = basic ++ pkgs_level_zero;
-  level_one = basic ++ pkgs_level_one;
-  level_two = basic ++ pkgs_level_two ++ [ code ];
-  level_three = basic ++ pkgs_level_three;
+  level_one = level_zero ++ pkgs_level_one;
+  level_two = level_one ++ pkgs_level_two ++ [ code ];
+  level_three = level_two ++ pkgs_level_three;
+  level_four = level_three ++ pkgs_level_four;
   bash = pkgs.bashInteractive_5;
   genv = with pkgs; [
     terminus_font terminus_font_ttf
@@ -50,7 +51,7 @@ rec {
     xorg.xev
     pciutils
     firefox
-  ] ++ pkgs_level_zero;
+  ];
   pkgs_level_two = with pkgs; [
     # git-hub
     gitAndTools.hub gitAndTools.gh
@@ -59,20 +60,22 @@ rec {
     leafpad
     discord
     tdesktop
-    libreoffice
-    poppler_utils
     gitAndTools.gh
     imagemagick
-    zim
     xarchiver
-    pandoc
+    xfontsel
+    gwenview
+  ];
+  pkgs_level_three = with pkgs; [
+    libreoffice
     mplayer
     vlc
     youtube-dl
-    xfontsel
-    gwenview
-  ] ++ pkgs_level_one;
-  pkgs_level_three = with pkgs; [
+    poppler_utils
+    zim
+    pandoc
+  ];
+  pkgs_level_four = with pkgs; [
     emacs
     ly
     powershell
@@ -94,7 +97,7 @@ rec {
     hugo
     guvcview
     chromium
-  ] ++ pkgs_level_two;
+  ];
   games = with pkgs; [
     minetest
     openarena
