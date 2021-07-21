@@ -15,10 +15,17 @@ rec {
     terminus_font terminus_font_ttf
     rofi
     ibus ibus-engines.table ibus-engines.uniemoji ibus-qt
-    xlockmore xss-lock
+#    xlockmore xss-lock
     pulseaudio-ctl
   ];
   vim = pkgs.vim_configurable.override { python = pkgs.python3; };
+  code = pkgs.vscode-fhsWithPackages (ps: with ps; [
+    rustup zlib  # needed for rust lang server extension
+    # (python39Full.withPackages (pp: with pp; [ pipenv ]))
+    pipenv
+    python39Full
+    python310
+  ]);
   netsurf = pkgs.netsurf.browser.override { uilib = "gtk3"; };
   jetbrains = with pkgs; with jetbrains; {
     inherit goland;
@@ -39,7 +46,7 @@ rec {
     emacs
     leafpad
     pavucontrol
-    pasystray
+#    pasystray
     file
   ];
   util_pkgs = with pkgs; [
