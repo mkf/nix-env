@@ -6,9 +6,11 @@ let
   };
 in
 rec {
-  basic = [ bash genv ];
-  base = basic ++ base_util;
-  just = basic ++ util_pkgs;
+  basic = [ genv ];
+  level_zero = basic ++ pkgs_level_zero;
+  level_one = basic ++ pkgs_level_one;
+  level_two = basic ++ pkgs_level_two ++ code;
+  level_three = basic ++ pkgs_level_three;
   bash = pkgs.bashInteractive_5;
   genv = with pkgs; [
     terminus_font terminus_font_ttf
@@ -24,81 +26,71 @@ rec {
     inherit rider;
     inherit webstorm;
   };
-  base_util = with pkgs; [
+  pkgs_level_zero = with pkgs; [
     git
     xclip
     elinks links
     dillo
-    firefox
-    scrot
-    leafpad
-    pavucontrol
     pasystray
+    scrot
+    pavucontrol
     file
-    tdesktop
-    pcmanfm
-    discord
-    spotify
-    pass-otp passff-host
-    qtpass
+    howl
   ];
-  util_pkgs = with pkgs; [
-    git-hub
-    # ly
-    gwenview #TODO
-    xfontsel
-    x2goclient
-    # powershell
-    aerc
-    android-file-transfer
+  pkgs_level_one = with pkgs; [
+    pass-otp
+    pcmanfm
     zathura
+    xorg.xev
+    pciutils
+    firefox
+  ] ++ pkgs_level_zero;
+  pkgs_level_two = with pkgs; [
+    # git-hub
+    gitAndTools.hub gitAndTools.gh
+    qtpass
+    xorg.xclock
+    leafpad
+    discord
+    tdesktop
+    spotify
+    libreoffice
+    poppler_utils
+    gitAndTools.gh
+    imagemagick
+    zim
+    xarchiver
+    pandoc
     mplayer
     vlc
     youtube-dl
-    libreoffice
-    # gimp
-    leafpad
-    pandoc
-    xarchiver
-    # brave
+    xfontsel
+    gwenview
+  ] ++ pkgs_level_one;
+  pkgs_level_three = with pkgs; [
+    emacs
+    ly
+    powershell
+    x2goclient
     stalonetray
-    # feedreader
-    # teams
-    # texlive.combined.scheme-small
-    # rubber
-    # texworks
-    zim
+    feedreader
     graphviz python38Packages.xdot
-    # texlive.combined.scheme-medium
-    # chromium
-    guvcview
-    hugo
-    imagemagick
-    # thunderbird
-    xorg.xev #TODO
-
-    abiword
-    amp
-    # clojure leiningen
-    # conda
-    # dotnet-sdk
-    # freemind
-    gitAndTools.gh
-    # go
-    gtk2fontsel
-    # nixpkgs-review
-    # Patchwork
-    pciutils
-
-    write_stylus
-    poppler_utils
-    # texmaker
-    # texlive.combined.scheme-full
-    # vivaldi
+    vivaldi
     xournalpp
+    write_stylus
+    freemind
+    amp
+    abiword
+    go
+    gtk2fontsel
+    nixpkgs-review
+    dotnet-sdk
+    thunderbird
+    hugo
+    guvcview
     xorg.xclock
     virt-manager
-  ] ++ base_util;
+  ] ++ pkgs_level_two;
   games = with pkgs; [
     minetest
     openarena
