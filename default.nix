@@ -7,15 +7,14 @@ let
 in
 rec {
   basic = [ genv ];
-  base = basic ++ base_util;
-  just = basic ++ util_pkgs;
+  level_zero = basic ++ pkgs_level_zero;
+  level_one = basic ++ pkgs_level_one;
+  level_two = basic ++ pkgs_level_two ++ code;
+  level_three = basic ++ pkgs_level_three;
   bash = pkgs.bashInteractive_5;
   genv = with pkgs; [
-    tint2
     terminus_font terminus_font_ttf
-    rofi
     ibus ibus-engines.table ibus-engines.uniemoji ibus-qt
-#    xlockmore xss-lock
     pulseaudio-ctl
   ];
   vim = pkgs.vim_configurable.override { python = pkgs.python3; };
@@ -34,79 +33,68 @@ rec {
     inherit rider;
     inherit webstorm;
   };
-  base_util = with pkgs; [
-    rxvt_unicode
+  pkgs_level_zero = with pkgs; [
     git
     xclip
     elinks links
     dillo
-    # midori
-    firefox
     scrot
-    emacs
-    leafpad
     pavucontrol
-#    pasystray
     file
+    howl
   ];
-  util_pkgs = with pkgs; [
-    kakoune kak-lsp
-    zsh
-    git-hub
-    pass-otp passff-host
-    qtpass
-    # ly
-    gwenview
-    xfontsel
-    x2goclient
-    powershell
-    tdesktop
-    aerc
-    android-file-transfer
+  pkgs_level_one = with pkgs; [
+    pass-otp
     pcmanfm
     zathura
+    xorg.xev
+    pciutils
+    firefox
+  ] ++ pkgs_level_zero;
+  pkgs_level_two = with pkgs; [
+    # git-hub
+    gitAndTools.hub gitAndTools.gh
+    qtpass
+    xorg.xclock
+    leafpad
+    discord
+    tdesktop
+    libreoffice
+    poppler_utils
+    gitAndTools.gh
+    imagemagick
+    zim
+    xarchiver
+    pandoc
     mplayer
     vlc
     youtube-dl
-    libreoffice
-    gimp
-    leafpad
-    pandoc
-    xarchiver
-    brave
+    xfontsel
+    gwenview
+  ] ++ pkgs_level_one;
+  pkgs_level_three = with pkgs; [
+    emacs
+    ly
+    powershell
+    x2goclient
     stalonetray
     feedreader
-    teams
-    zim
     graphviz python38Packages.xdot
-    chromium
-    guvcview
-    hugo
-    imagemagick
-    thunderbird
-    xorg.xev
-
-    abiword
-    amp
-    clojure leiningen
-    conda
-    discord
-    dotnet-sdk
+    vivaldi
+    xournalpp
+    write_stylus
     freemind
-    gitAndTools.gh
+    amp
+    abiword
     go
     gtk2fontsel
     nixpkgs-review
-    pciutils
-
-    write_stylus
-    poppler_utils
-    spotify
-    vivaldi
-    xournalpp
-    xorg.xclock
-    kmail
-  ] ++ base_util;
+    dotnet-sdk
+    thunderbird
+    hugo
+    guvcview
+    chromium
+  ] ++ pkgs_level_two;
   games = with pkgs; [
     minetest
     openarena
