@@ -9,7 +9,7 @@ rec {
   basic = [ genv ];
   level_zero = basic ++ pkgs_level_zero;
   level_one = basic ++ pkgs_level_one;
-  level_two = basic ++ pkgs_level_two ++ code;
+  level_two = basic ++ pkgs_level_two ++ [ code ];
   level_three = basic ++ pkgs_level_three;
   bash = pkgs.bashInteractive_5;
   genv = with pkgs; [
