@@ -51,6 +51,7 @@ rec {
     xorg.xev
     pciutils
     firefox
+    geany
   ];
   pkgs_level_two = with pkgs; [
     # git-hub
