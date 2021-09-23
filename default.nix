@@ -63,7 +63,9 @@ rec {
     qtpass
     xorg.xclock
     leafpad
-    unstable.discord
+    (import (builtins.fetchTarball
+      https://github.com/NixOS/nixpkgs/archive/pull/138987/head.tar.gz )
+     { inherit system; config.allowUnfree = true; }).discord
     tdesktop
     gitAndTools.gh
     imagemagick
