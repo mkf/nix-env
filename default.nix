@@ -4,6 +4,10 @@ let
     inherit system;
     config.allowUnfree = true;
   };
+  unstable = import <nixos-unstable> {
+    inherit system;
+    config.allowUnfree = true;
+  };
 in
 rec {
   basic = [ genv ];
@@ -59,7 +63,7 @@ rec {
     qtpass
     xorg.xclock
     leafpad
-    discord
+    unstable.discord
     tdesktop
     gitAndTools.gh
     imagemagick
