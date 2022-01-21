@@ -11,11 +11,8 @@ rec {
   just = basic ++ util_pkgs;
   bash = pkgs.bashInteractive_5;
   genv = with pkgs; [
-    tint2
     terminus_font terminus_font_ttf
-    rofi
     ibus ibus-engines.table ibus-engines.uniemoji ibus-qt
-    xlockmore xss-lock
     pulseaudio-ctl
   ];
   vim = pkgs.vim_configurable.override { python = pkgs.python3; };
@@ -28,15 +25,12 @@ rec {
     inherit webstorm;
   };
   base_util = with pkgs; [
-    rxvt_unicode
     git
     xclip
     elinks links
     dillo
-    midori
     firefox
     scrot
-    emacs
     leafpad
     pavucontrol
     pasystray
@@ -49,8 +43,6 @@ rec {
     qtpass
   ];
   util_pkgs = with pkgs; [
-    kakoune kak-lsp
-    zsh
     git-hub
     # ly
     gwenview #TODO
@@ -106,7 +98,6 @@ rec {
     xournalpp
     xorg.xclock
     virt-manager
-    kmail
   ] ++ base_util;
   games = with pkgs; [
     minetest
